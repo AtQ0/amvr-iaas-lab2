@@ -1,0 +1,23 @@
+
+
+app.use(express.json());
+
+// Serve the frontend (dist folder) after running `npm run build-frontend`
+app.use(express.static(path.join(__dirname, 'dist'))); // Serve the frontend dist files
+
+// Define your API routes (for example)
+app.use('/api/register', require('./routes/newUserRoutes'));
+app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/admin', require('./routes/adminRoutes'));
+app.use('/api/profile', require('./routes/profileRoutes'));
+app.use('/api/posts', require('./routes/postRoutes'));
+
+// Catch-all route to serve the frontend for any non-API request
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));  // Send index.html from dist folder
+});
+
+// Start the backend server
+app.listen(port, () => {
+  console.log(`Server listening at http://localhost:${port}`);
+});
