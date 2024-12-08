@@ -5,7 +5,7 @@ services:
       my-postgres:
         condition: service_healthy
     environment:
-      - PGURI=postgres://postgres:secret@my-postgres/my-lab2-database
+      - PGURI=postgres://postgres:password@my-postgres/mydatabase
     ports:
       - '3000:3000'
 

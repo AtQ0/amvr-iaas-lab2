@@ -27,7 +27,7 @@ exports.checkAuth = async (req, res) => {
             return res.status(200).json({
                 message: `${user.id}`,
                 success: true,
-                uuid: user.uuid
+                uuid: user.uuid  // Ensure this field is included in the response
             });
         } else {
             return res.status(401).json({ message: 'Invalid email or password' });
